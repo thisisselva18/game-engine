@@ -25,7 +25,7 @@ struct AppState {
 	int offSetY = 0; 
 	float zoom = 1.0f; // Zoom factor for the canvas
 	int tilemap[100][100] = { 0 };
-	bool tilemapInitialised = false; // Just to check if the tilemap has been initialised 
+	bool tilemapInitialised = false; 
     // Textures and other subsystems can be added at a later stage
     SDL_AppResult appResult = SDL_APP_CONTINUE;
 };
@@ -247,7 +247,7 @@ SDL_AppResult SDL_AppIterate(void *appState) {
 
 // Cleans up the initialised subsystems.
 void SDL_AppQuit(void *appState, SDL_AppResult result) {
-    AppState* state = static_cast<AppState *>(appState);
+    AppState *state = static_cast<AppState *>(appState);
     if (state != nullptr) {
         SDL_DestroyTexture(state->tile_map_texture);
 		SDL_DestroySurface(state->tile_map);
