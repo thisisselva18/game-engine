@@ -6,12 +6,8 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_keyboard.h>
 
-const int SCREEN_WIDTH = 1000;
-const int SCREEN_HEIGHT = 800;
-const int COLOR_RED = 255;
-const int COLOR_GREEN = 0;
-const int COLOR_BLUE = 0;
-const int COLOR_ALPHA = 128;
+// Used in this example to keep track of selected object
+static int s_currentRect = 1;
 
 struct AppState {
     SDL_Window *mainWindow;
@@ -81,7 +77,7 @@ SDL_AppResult SDL_AppInit(void** appState, int argc, char* argv[]) {
 // TODO: Try and make a genericsed function that is called from here to allow
 //       custom event handling to be added by a user.
 SDL_AppResult SDL_AppEvent(void *appState, SDL_Event *event) {
-    AppState *state = static_cast<AppState *>(appState);
+    Engine::Engine *gameEngine = static_cast<Engine::Engine *>(appState);
     if (event->type == SDL_EVENT_QUIT || event->type == SDL_EVENT_TERMINATING) {
         state->appResult = SDL_APP_SUCCESS;
     }
